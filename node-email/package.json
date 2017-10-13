@@ -1,0 +1,22 @@
+{
+  "name": "node-mail",
+  "version": "1.0.0",
+  "description": "receive emial",
+  "main": "receivemail.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "node",
+    "email"
+  ],
+  "author": "lirawx",
+  "license": "MIT",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.2",
+    "form-data": "^2.3.1",
+    "imap": "^0.8.19",
+    "mailparser": "^2.1.0",
+    "node-schedule": "^1.2.5"
+  }
+}
