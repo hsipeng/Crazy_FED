@@ -1,0 +1,119 @@
+
+$(function(){
+	new JyWebScoket.qrToLab();
+	haslogin("12",keys);
+	
+	$(".superSearch").click(function(){
+		if(loginflag){
+			var info = getlabstatus();
+			if(!info[0]){
+				qr_type = "s";
+				$("#labImg").attr("src","/jylab/supsearch/qr/"+qr_type);
+				$(".layheader div:nth-child(1)").html("超级搜索");
+				$(".layheader div:nth-child(2)").html("按行业、金额搜索，结果可按表格显示");
+				$("#labModal").modal("show");
+			}
+		}else{
+			unseatflag = true;
+			$(".code-text").html('<span style="font-size: 22px;margin-top: 10px;display: inline-block;color:#252627;font-weight:normal;"><img id="wxpng" src="/images/wx1.png">请先微信扫码登录</span>')
+			$("#bidLogin").modal("show");
+		}
+	})
+	
+	$(".j-nav .j-nav-link:eq(2)").addClass("active");
+	$(".q-mark").click(function(){
+		$(".remind").fadeIn();
+	})
+	$(".iknow").click(function(){
+		$(".remind").fadeOut();
+	})
+	
+	$(window).scroll(function(){
+		if($(this).scrollTop() > 0){
+			$("#backTop").show();
+		}else{
+			$("#backTop").hide();
+		}
+	});
+})
+
+
+function noIn(p){
+	var thisId = $(p).attr("dataId");
+	
+	var dataindustry = $(p).parents(".luce-left").next(".luce-right").find("a:eq(2)").text();
+	dataId = thisId;
+	if(loginflag){
+		var aHref = "";
+		if(searchvalue != ""){
+			if(dataindustry!=""&&dataindustry!=undefined){
+				aHref += '.html?kds='+searchvalue+'&industry='+dataindustry;
+			}else{
+				aHref += '.html?kds='+searchvalue;
+			}
+		}else{
+			if(dataindustry!=""&&dataindustry!=undefined){
+				aHref += '.html?industry='+dataindustry;
+			}else{
+				aHref += '.html';
+			}
+		}
+		window.open("/article/content/"+thisId+aHref);
+	}else{
+		$(".code-text").html('<span><img id="wxpng" src="/images/wx1.png">微信扫码登录</span><br><span id="freetext">立即免费使用</span>')
+		$('#myModal').modal("show");
+	}
+}
+
+function priceCss(){
+	var minp = $("#minprice").val();
+	var maxp = $("#maxprice").val();
+	if(minp!=""&&isNaN(minp)){
+		$("#minprice").val("")
+	}
+	if(maxp!=""&&isNaN(maxp)){
+		$("#maxprice").val("")
+	}
+	if ($("#minprice").val()==""&&$("#maxprice").val()==""){
+		$(".pricefat").removeClass("customtime-active");
+		$(".pricebut").hide();
+		return false;
+	}
+	if (parseInt(minp)>parseInt(maxp)){
+		$("#minprice").val(maxp);
+		$("#maxprice").val(minp);
+	}
+	$(".pricebut").hide();
+	$(".pricefat").addClass("active");
+	$(".Price-content").find("span:first-child").removeClass("active");
+	$(".pricefat").removeClass("customtime-active");
+	return true;
+}
+
+
+function labClose(){
+	$("#labModal").modal("hide");
+}
+
+function labWelClose(){
+	$("#welcome").modal("hide");
+}
+
+
+
+encryptId: "QVYVWABNVgRSDBENE1xVQgIJCFBMDkMM",…}
+encryptId
+:
+"QVYVWABNVgRSDBENE1xVQgIJCFBMDkMM"
+redisheadimg
+:
+"http://wx.qlogo.cn/mmopen/pburdzLK7PXsdytHIEdKl6zCjVdlBSUTd4A6icuS8f2r30TvCLF1JVCdbJias1iaNpFz67XLqYyNFvGrEqEn04dmA/0"
+result
+:
+"ok"
+s_headimage
+:
+"/upload/2017/10/18/201710181342445521.jpg"
+s_nickname
+:
+"惜丨无颜"

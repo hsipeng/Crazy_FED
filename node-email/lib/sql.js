@@ -29,14 +29,17 @@ var query = function(sql,val){
 }
 
 
-let insertData = function( title, content) {
-	console.log(title+':'+content)
-	let _sql = `INSERT INTO kppw_task VALUES (null, "${title}", "${content}", '3', '170', '051085387080', '0', '3', null, '0.00', '0', null, NOW(), null, DATE_ADD(NOW(),INTERVAL 4320 MINUTE), null, null, null, null, '0.00', '0.00', '0.00', '1', '37', '0', '1', '0', '21', null, '1', '0', null, '5', '0', NOW(), null, NOW());`
-	console.log(_sql)
+let insertData = function( title, content, id) {
+	let _sql = `INSERT INTO kppw_task VALUES (null, "${title}", "${content}", '3', "${id}", '051085387080', '0', '3', null, '0.00', '0', null, NOW(), null, DATE_ADD(NOW(),INTERVAL 4320 MINUTE), null, null, null, null, '0.00', '0.00', '0.00', '1', '37', '0', '1', '0', '22', null, '1', '0', null, '5', '0', NOW(), null, NOW());`
+
 	return query(_sql)
   }
 
-
+let getCate = function (name) {
+	let _sql = `select id,name FROM kppw_cate where name="${name}" limit 0,1`
+	return query(_sql)
+}
 module.exports = {
-    insertData
+    insertData,
+    getCate
 }
