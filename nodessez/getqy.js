@@ -12,9 +12,9 @@ for(var i=1;i<2 ;i++){
             }
             var $ = cheerio.load(sres.text,{decodeEntities:false});
             // console.log($('body table:nth-child(4) td:nth-child(4) table table  tr td:nth-child(1)').html())
-            $('body table:nth-child(4) td:nth-child(4) table table  tr td:nth-child(1)').each(function (idex,ele) {
+            $('body table:nth-child(4) td:nth-child(4) table table tr').each(function (idex,ele) {
                 var $a = $(ele).find('a')
-                var url = 'http://www.ssez.com/news.asp'+$a.attr('href')
+                var url = 'http://www.ssez.com/qy.asp'+$a.attr('href')
                 var title = $a.text()
 
                 getContent(url,function (data) {
@@ -45,7 +45,7 @@ var getContent = function (url,callbak) {
                 console.log(err)
             }
             var $ = cheerio.load(sres.text,{decodeEntities:false});
-            var content = $('body table:nth-child(4) td:nth-child(4) table table tr:nth-child(3)').html()
+            var content = $('body table:nth-child(4) td:nth-child(4) table table tr:nth-child(2)').html()
             callbak(content)
         })
 }
