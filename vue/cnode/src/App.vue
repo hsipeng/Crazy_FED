@@ -5,8 +5,10 @@
 </template>
 
 <script>
+import store from './vuex/store'
 export default {
-  name: 'app'
+  name: 'app',
+  store
 }
 </script>
 
