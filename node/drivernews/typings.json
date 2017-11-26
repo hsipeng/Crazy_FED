@@ -1,0 +1,15 @@
+{
+  "globalDependencies": {
+    "node": "registry:dt/node#7.0.0+20170322231424"
+  },
+  "compilerOptions": {
+    "target": "ES6"
+ },
+ "include": [
+    "src/**/*"
+ ],
+  "exclude": [
+    "node_modules",
+    "**/node_modules/*"
+]
+}
