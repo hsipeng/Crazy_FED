@@ -2,10 +2,16 @@ const HtmlWebpackPlugin = require('html-webpack-plugin') // installed via npm
 const webpack = require('webpack') // to access built-in plugins
 const path = require('path')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
-const utils = require('./utils')
-const autoprefixer = require('autoprefixer')({ browsers: ['iOS >= 7', 'Android >= 4.1'] })
+const appconfig = require('./config')
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
+}
+
+function assetsPath (_path) {
+  const assetsSubDirectory = process.env.NODE_ENV === 'production'
+    ? appconfig.build.assetsSubDirectory
+    : appconfig.dev.assetsSubDirectory
+  return path.posix.join(assetsSubDirectory, _path)
 }
 
 process.env.NODE_ENV = 'production'
@@ -14,11 +20,15 @@ const config = {
   entry: './src/index.ts',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: '[name].[hash:7].js'
+    filename: '[name].js',
+    publicPath: '/'
   },
   // Enable sourcemaps for debugging webpack's output.
   // devtool: 'source-map',
-
+  devtool: 'inline-source-map',
+  devServer: {
+    contentBase: './dist'
+  },
   resolve: {
     // Add '.ts' and '.tsx' as resolvable extensions.
     extensions: ['.ts', '.tsx', '.js', '.json']
@@ -30,7 +40,7 @@ const config = {
         test: /\.css$/,
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
-          use: 'css-loader'
+          use: ['css-loader', `autoprefixer-loader?{ browsers: ['last 100 versions'] }`]
         })
       },
       {
@@ -56,7 +66,7 @@ const config = {
         loader: 'url-loader',
         options: {
           limit: 10000,
-          name: utils.assetsPath('img/[name].[hash:7].[ext]')
+          name: assetsPath('img/[name].[hash:7].[ext]')
         }
       },
       {
@@ -64,7 +74,7 @@ const config = {
         loader: 'url-loader',
         options: {
           limit: 10000,
-          name: utils.assetsPath('media/[name].[hash:7].[ext]')
+          name: assetsPath('media/[name].[hash:7].[ext]')
         }
       },
       {
@@ -72,7 +82,7 @@ const config = {
         loader: 'url-loader',
         options: {
           limit: 10000,
-          name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
+          name: assetsPath('fonts/[name].[hash:7].[ext]')
         }
       },
       { test: /\.tsx?$/, loader: 'awesome-typescript-loader' },
@@ -91,7 +101,7 @@ const config = {
     new HtmlWebpackPlugin({template: './src/index.html'}),
     new ExtractTextPlugin({
       filename: (getPath) => {
-        return getPath('src/[name].[hash:7].css').replace('src/', '')
+        return getPath('src/[name].css').replace('src/', '')
       },
       allChunks: true
     })
