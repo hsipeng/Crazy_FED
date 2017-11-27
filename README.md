@@ -25,3 +25,9 @@ todo: node-schedule 定时.
 
 [cnode](https://github.com/lirawx/Crazy_FED/tree/master/vue/cnode)
 基于cnode的api 初步搭建vue全家桶的单页应用.
+
+
+## typescript
+
+typescript 学习笔记
+一个小demo 实现基本的webpack 打包

@@ -170,7 +170,7 @@ a {
       <scroller :on-refresh="refresh"
             :on-infinite="infinite">
       <li v-for="item in topiclists" :key="item.id"><router-link :to="{ name: 'Post', params: { id: item.id } }">
-        
+
         <div class="top">
               <div class="headimg" :style="{ backgroundImage: 'url(' + item.author.avatar_url + ')' }"></div>
               <div class="box">

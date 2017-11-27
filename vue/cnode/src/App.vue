@@ -6,13 +6,15 @@
 
 <script>
 import store from './vuex/store'
+
 export default {
   name: 'app',
   store
 }
 </script>
 
-<style>
+<style lang='scss'>
+@import url('./css/font-awesome.css');
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

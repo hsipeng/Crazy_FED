@@ -49,24 +49,7 @@ module.exports = {
         test: /\.css$/,
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
-          use: [{
-            loader: 'css-loader',
-            options: {
-              importLoaders: 1
-            }
-          }, {
-            loader: 'postcss-loader',
-            options: {
-              plugins: (loader) => [autoprefixer({
-                browsers: [
-                  '> 1%',
-                  'last 5 versions',
-                  'ie 6'
-                ]
-              })]
-            }
-          }
-          ]
+          use: ['css-loader', `autoprefixer-loader?{ browsers: ['last 100 versions'] }`]
         })
       },
       {
