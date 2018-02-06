@@ -1,0 +1,29 @@
+{
+  "name": "hackernews",
+  "version": "1.0.0",
+  "description": "",
+  "main": "webpack.config.js",
+  "scripts": {
+    "start": "webpack-dev-server",
+    "build": "rm -rf ./build/bundle.js && webpack"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "css-loader": "^0.28.9",
+    "jquery": "^3.3.1",
+    "moment": "^2.20.1",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "style-loader": "^0.20.1"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "file-loader": "^1.1.6",
+    "url-loader": "^0.6.2"
+  }
+}
