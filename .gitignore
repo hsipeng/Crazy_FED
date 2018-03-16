@@ -9,3 +9,4 @@ typescript/proj/node_modules
 react/helloworld/node_modules
 typescript/gulpproj/node_modules
 typescript/my-app/node_modules
+.DS_Store
